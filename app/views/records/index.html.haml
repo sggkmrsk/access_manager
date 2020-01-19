@@ -1,0 +1,27 @@
+%div ユーザの入退出履歴
+%table
+  %tr
+    %td ユーザID
+    %td ユーザ名
+    %td 入室
+    %td 退室
+    %td 教室
+  -@records.each do |record|
+    %tr
+      = form_with(model:record, local: true, class: "search-form") do |form|
+        %td
+          =record.user.id
+        %td
+          =record.user.name
+        %td
+          =form.datetime_field :entered_at,value: record.entered_at.strftime("%Y-%m-%dT%H:%M")
+        %td
+          -if record.exited_at == nil
+            =form.datetime_field :exited_at,value: Time.now.strftime("%Y-%m-%dT%H:%M")
+          -else
+            =form.datetime_field :exited_at,value: record.exited_at.strftime("%Y-%m-%dT%H:%M")
+        %td 教室名
+        %td
+          =form.submit "更新する",class:"btn"
+
+=link_to '戻る',root_path

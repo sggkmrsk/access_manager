@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :admins
   devise_for :users
   root to:"tops#index"
-  resources :users,only: [:index,:edit,:update]
-  resources :admins
+  resources :users
+  resources :records
+  resources :entered_exiteds,only: [:create,:update,:index]
   resources :tops,only: :index
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :informations,only: :index
+  namespace :api do
+    resources :entered_exiteds,only: [:create,:update,:index], defaults: { format: 'json' }
+  end
 end

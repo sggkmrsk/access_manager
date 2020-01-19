@@ -1,0 +1,57 @@
+ユーザーページ
+
+%div こんにちは
+%i
+  =@user.name
+さん
+
+%div あなたの現在の情報
+%table
+  %tr
+    %td ユーザ名
+    %td メールアドレス
+    %td slackID
+    %td 認証カード
+  %tr
+    %td
+      =@user.name
+    %td
+      =@user.email
+    %td
+      =@user.slack_account
+    %td
+      =@user.idm
+
+=link_to "編集","#"
+=link_to "認証カード再登録","#"
+
+%div 直近の入退出履歴
+%table 
+  %tr
+    %td 入室
+    %td 退室
+    %td 教室
+  - @records.each do |record|
+    %tr
+      %td 
+        =record.entered_at.strftime("%Y/%m/%d %H:%M")
+      %td
+        -if record.exited_at == nil
+          =record.exited_at
+        -else
+          =record.exited_at.strftime("%Y/%m/%d %H:%M")
+      %td 教室名
+
+=link_to "もっと見る","#"
+
+-if @record
+  = form_with(url: entered_exited_path(@record.user_id), local: true, method: :patch, class: "search-form") do |form|
+    = form.submit "退室する", class: "search-btn"
+-else
+  = form_with(url: entered_exiteds_path, local: true, method: :post, class: "search-form") do |form|
+    = form.submit "入室する", class: "search-btn"
+
+-if @user.authority != "user"
+  =link_to "ユーザ情報編集",users_path
+  =link_to "入退室情報編集",records_path
+=link_to "ログアウト",destroy_user_session_path,method: :delete, class: 'btn'

@@ -1,0 +1,34 @@
+.editor__edit
+%div ユーザ一覧
+%table
+  %tr
+    %td ユーザID
+    %td ユーザ名
+    %td メールアドレス
+    %td slackID
+    %td 認証カード
+    -if current_user.authority == 'admin'
+      %td ユーザ権限
+  -@users.each do |user|
+    %tr
+      = form_with(model:user, local: true, class: "search-form") do |form|
+        %td 
+          =user.id
+        %td
+          =form.text_field :name,placeholder: user.name
+        %td
+          =form.text_field :email,placeholder: user.email
+        %td
+          =form.text_field :slack_account,placeholder: user.slack_account
+        %td
+          =form.text_field :idm,placeholder: user.idm
+        -if current_user.authority == 'admin'
+          %td
+            =form.text_field :authority,placeholder: user.authority
+        %td
+          =form.submit "更新する",class:"btn"
+        -if current_user.authority == 'admin'
+          %td
+            =link_to "削除する",user_path(user.id),method: :delete,class:"btn"
+
+=link_to '戻る',root_path
