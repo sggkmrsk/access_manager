@@ -1,46 +1,22 @@
 $(function(){
   $(window).bind("load", function(){
-    if(document.URL.match('/entered_exiteds')) { 
+    if(document.URL.match('/informations')) { 
 
       let startButton = document.getElementById('start');
       let idmMessage = document.getElementById('idm');
       let waitingMessage = document.getElementById('waiting');
+      let userId = $(".user").attr("data-user-id")
 
-      function entryProcessing(idmStr){
-        $.ajax({
-          type: "POST",
-          url: 'api/entered_exiteds#create',
-          data: {idm: idmStr},
-          dataType: "json"
-        })
-        .done(function() {
-          alert("入室処理が完了しました");
-        })
-        .fail(function() {
-          alert("編集するにはログインが必要です");
-        })
-        .always(function(){
-          return
-        });
-      };
+      console.log(startButton)
+      console.log(idmMessage)
+      console.log(waitingMessage)
+      console.log(userId)
 
-      function exitProcessing(record,idmStr){
-        var url = "api/entered_exiteds/"+record.id+"#update"
-        $.ajax({
-          type: "PATCH",
-          url: url,
-          data: {idm: idmStr},
-          dataType: "json"
-        })
-        .done(function() {
-          alert("退室処理が完了しました");
-        })
-        .fail(function() {
-          alert("編集するにはログインが必要です");
-        })
-        .always(function(){
-          return
-        });
+      function buildHTML(idm){
+        var html = `<td class="idm">
+                      ${idm}
+                    </td>`
+        return html
       }
 
       async function sleep(msec) {
@@ -155,18 +131,19 @@ $(function(){
             }
             idmStr += idm[i].toString(16);
           }
+          var url = "/api/idms/"+userId+"#update"
           $.ajax({
-            type: "GET",
-            url: 'api/entered_exiteds#index',
-            data: {idm: idmStr},
+            type: "patch",
+            url: url,
+            data: {id: userId,idm: idmStr},
             dataType: "json"
           })
-          .done(function(record) {
-            if (record.id == null){
-              entryProcessing(idmStr)
-            }else{
-              exitProcessing(record,idmStr)
-            }
+          .done(function(result) {
+            console.log(result)
+            var html = buildHTML(idmStr)
+            $(".idm").replaceWith(html)
+            alert("idmを変更しました");
+            stopImmediatePropagation
           })
           .fail(function() {
             console.log()

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update!(user_params)
-    redirect_to users_path
+    redirect_to informations_path
   end
 
   def destroy
@@ -26,6 +26,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email,:authority)
+    params.require(:user).permit(:name, :email,:authority,:idm,:slack_account)
   end
 end

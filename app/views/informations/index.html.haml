@@ -1,4 +1,4 @@
-ユーザーページ
+%div.user{data: {user_id: @user.id}} ユーザーページ
 
 %div こんにちは
 %i
@@ -13,17 +13,24 @@
     %td slackID
     %td 認証カード
   %tr
+    = form_with(model:@user, local: true, class: "search-form") do |form|
+      %td
+        =form.text_field :name,placeholder: @user.name
+      %td
+        =form.email_field :email,placeholder: @user.email
+      %td
+        =form.text_field :slack_account,placeholder: @user.slack_account
+      %td.idm
+        =@user.idm
+      %td
+        = form.submit "編集する", class: "search-btn"
     %td
-      =@user.name
-    %td
-      =@user.email
-    %td
-      =@user.slack_account
-    %td
-      =@user.idm
-
-=link_to "編集","#"
-=link_to "認証カード再登録","#"
+      %button#start{style: "display: block;"}
+        認証カード再登録
+      #waiting{style: "display: none;"}
+        %button{disabled: "disabled"}
+          FeliCaリーダーにカードをかざしてください
+      #idm{style:"display: none;"}
 
 %div 直近の入退出履歴
 %table 
