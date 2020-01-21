@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :records
   resources :tops,only: :index
-  resources :informations,only: :index
+  resources :informations,only: [:index,:update]
   resources :entered_exiteds,only: [:create,:update,:index]
   namespace :api do
     resources :entered_exiteds,only: [:create,:update,:index], defaults: { format: 'json' }

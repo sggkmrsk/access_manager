@@ -11,19 +11,22 @@
     %td ユーザ名
     %td メールアドレス
     %td slackID
-    %td 認証カード
   %tr
-    = form_with(model:@user, local: true, class: "search-form") do |form|
+    = form_with(model:@user,url:information_path(@user.id), method: :patch,local: true, class: "search-form") do |form|
       %td
         =form.text_field :name,placeholder: @user.name
       %td
         =form.email_field :email,placeholder: @user.email
       %td
         =form.text_field :slack_account,placeholder: @user.slack_account
-      %td.idm
-        =@user.idm
       %td
         = form.submit "編集する", class: "search-btn"
+  %tr
+    %td 認証カード
+  %tr
+    %td.idm
+      =@user.idm
+  %tr
     %td
       %button#start{style: "display: block;"}
         認証カード再登録
@@ -31,6 +34,8 @@
         %button{disabled: "disabled"}
           FeliCaリーダーにカードをかざしてください
       #idm{style:"display: none;"}
+    %td
+      %button カードの読み込みを停止
 
 %div 直近の入退出履歴
 %table 

@@ -9,13 +9,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     user = User.find(params[:id])
     user.update!(user_params)
-    redirect_to informations_path
+    redirect_to users_path
   end
 
   def destroy
@@ -26,6 +23,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email,:authority,:idm,:slack_account)
+    params.require(:user).permit(:name, :email,:authority,:slack_account,:idm)
   end
 end
