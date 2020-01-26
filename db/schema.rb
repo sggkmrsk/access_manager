@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2020_01_12_061353) do
 
-  create_table "records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "records", force: :cascade do |t|
     t.datetime "entered_at", null: false
     t.datetime "exited_at"
     t.bigint "user_id", null: false
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_01_12_061353) do
     t.index ["user_id"], name: "index_records_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "authority", default: "user", null: false
     t.string "email", default: "", null: false

@@ -37,7 +37,7 @@ $(function(){
           alert("入室処理が完了しました");
         })
         .fail(function() {
-          alert("編集するにはログインが必要です");
+          alert("通信エラー");
         })
         .always(function(){
           return
@@ -56,7 +56,7 @@ $(function(){
           alert("退室処理が完了しました");
         })
         .fail(function() {
-          alert("編集するにはログインが必要です");
+          alert("通信エラー");
         })
         .always(function(){
           return
