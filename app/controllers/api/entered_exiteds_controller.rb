@@ -1,5 +1,5 @@
 class Api::EnteredExitedsController < ApplicationController
-  before_action :set_record,only: :update
+  before_action :set_record
 
   def index
     if @record

@@ -19,7 +19,7 @@ html{
 }
 
 .user_info{
-  height:calc(100vh - 220px);
+  height:calc(100vh - 360px);
   width:40vw;
   &__headder{
     text-align:center;
@@ -79,7 +79,7 @@ html{
 }
 
 .record_info{
-  height:calc(100vh - 240px);
+  height:calc(100vh - 360px);
   width:55vw;
   border-left:solid 1px black;
   &__headder{
@@ -101,7 +101,7 @@ html{
       display:block;
       width:120px;
       height:60px;
-      font-size: 12px;
+      font-size: 16px;
       background-color:silver;
       margin:20px auto;
       &:hover{
@@ -109,5 +109,37 @@ html{
         color: black;
       }
     }
+  }
+}
+.edit_btn_area{
+  display:flex;
+  &__btn{
+    text-decoration: none;
+    text-align:center;
+    line-height: 60px;
+    display:block;
+    width:120px;
+    height:60px;
+    font-size: 16px;
+    background-color:silver;
+    &:hover{
+      background-color:orange;
+      color: black;
+    }
+  }
+}
+
+.loggout_btn{
+  text-decoration: none;
+  text-align:center;
+  line-height: 60px;
+  display:block;
+  width:120px;
+  height:60px;
+  font-size: 16px;
+  background-color:silver;
+  &:hover{
+    background-color:orange;
+    color: black;
   }
 }

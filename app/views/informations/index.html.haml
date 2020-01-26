@@ -72,6 +72,6 @@
 
 -if @user.authority != "user"
   .edit_btn_area
-    =link_to "ユーザ情報編集",users_path,class:"users_edit"
-    =link_to "入退室情報編集",records_path,class:"records_edit"
+    =link_to "ユーザ情報編集",users_path,class:"edit_btn_area__btn"
+    =link_to "入退室情報編集",records_path,class:"edit_btn_area__btn"
 =link_to "ログアウト",destroy_user_session_path,method: :delete, class: 'loggout_btn'

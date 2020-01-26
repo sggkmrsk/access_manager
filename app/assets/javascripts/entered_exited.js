@@ -24,8 +24,7 @@ $(function(){
 
       let startButton = document.getElementById('start');
       let idmMessage = document.getElementById('idm');
-      let waitingMessage = document.getElementById('waiting');
-      let reloadButton = document.getElementById('reload');
+      let waitingButton = document.getElementById('waiting');
 
       function entryProcessing(idmStr){
         $.ajax({
@@ -176,6 +175,7 @@ $(function(){
             }
             idmStr += idm[i].toString(16);
           }
+          console.log(idmStr)
           $.ajax({
             type: "GET",
             url: 'api/entered_exiteds#index',
@@ -183,6 +183,7 @@ $(function(){
             dataType: "json"
           })
           .done(function(record) {
+            console.log(record)
             if (record.id == null){
               entryProcessing(idmStr)
             }else{
@@ -198,7 +199,7 @@ $(function(){
           // waitingMessage.style.display = 'none';
         } else {
           idmMessage.style.display = 'none';
-          waitingMessage.style.display = 'block';
+          waitingButton.style.display = 'block';
         }
         // DEBUG:nfc.clf.rcs380:rcvd SENSF_RES 01000000000000000000000000000000000000
         // DEBUG:nfc.clf:found 212F sensf_res=01000000000000000000000000000000000000
@@ -230,7 +231,7 @@ $(function(){
           await device.selectConfiguration(1);
           await device.claimInterface(0);
           startButton.style.display = 'none';
-          waitingMessage.style.display = 'block';
+          waitingButton.style.display = 'block';
           do {
             await session(device);
             await sleep(500);
@@ -242,13 +243,13 @@ $(function(){
           } catch (e) {
           }
           startButton.style.display = 'block';
-          waitingMessage.style.display = 'none';
+          waitingButton.style.display = 'none';
           idmMessage.style.display = 'none';
           throw e;
         }
       });
 
-      reloadButton.addEventListener('click',function(){
+      waitingButton.addEventListener('click',function(){
         window.location.reload();
       });
     };

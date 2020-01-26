@@ -19,17 +19,15 @@ html{
 }
 
 #reload{
-
 }
 #back{
 }
 .btn_area{
-  display: flex;
-  justify-content: space-between;
   &__btn{
-    display:inline-block;
+    display:block;
     width:161px;
     height:100px;
+    margin:20px auto;
     &--text{
       text-decoration: none;
     }
