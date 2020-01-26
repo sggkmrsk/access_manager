@@ -1,69 +1,77 @@
-%div.user{data: {user_id: @user.id}} ユーザーページ
+!!!
+%h1.hello
+  ="こんにちは " + @user.name + " さん"
 
-%div こんにちは
-%i
-  =@user.name
-さん
+%div.info{data: {user_id: @user.id}}
+  %div.user_info
+    = form_with(model:@user,url:information_path(@user.id), method: :patch,local: true) do |form|
+      %p.user_info__headder
+        あなたの登録情報
+      %div.user_info__user_table
+        %table.user_info__user_table--table
+          %tr.user_info__user_table--tr
+            %td.user_info__user_table--td ユーザ名
+            %td.user_info__user_table--td 
+              =form.text_field :name,placeholder: @user.name
+          %tr.user_info__user_table--tr
+            %td.user_info__user_table--td メールアドレス
+            %td.user_info__user_table--td 
+              =form.email_field :email,placeholder: @user.email
+          %tr.user_info__user_table--tr
+            %td.user_info__user_table--td slackID
+            %td.user_info__user_table--td 
+              =form.text_field :slack_account,placeholder: @user.slack_account
+      =form.submit "編集する", class: "user_info__edit-btn"
 
-%div あなたの現在の情報
-%table
-  %tr
-    %td ユーザ名
-    %td メールアドレス
-    %td slackID
-  %tr
-    = form_with(model:@user,url:information_path(@user.id), method: :patch,local: true, class: "search-form") do |form|
-      %td
-        =form.text_field :name,placeholder: @user.name
-      %td
-        =form.email_field :email,placeholder: @user.email
-      %td
-        =form.text_field :slack_account,placeholder: @user.slack_account
-      %td
-        = form.submit "編集する", class: "search-btn"
-  %tr
-    %td 認証カード
-  %tr
-    %td.idm
-      =@user.idm
-  %tr
-    %td
-      %button#start{style: "display: block;"}
-        認証カード再登録
-      #waiting{style: "display: none;"}
-        %button{disabled: "disabled"}
+    %div.user_info__idm_table
+      %table.user_info__idm_table--table
+        %tr.user_info__idm_table--tr 
+          %td.user_info__idm_table--td
+            認証カード
+        %tr.user_info__idm_table--tr
+          %td.user_info__idm_table--td.idm
+            =@user.idm
+
+      %div.user_info__reader_btn_area
+        %button#start.user_info__reader_btn_area__btn{style: "display: block;"}
+          認証カード再登録
+        %button#waiting.user_info__reader_btn_area__btn{style: "display: none;",disabled: "disabled;"}
           FeliCaリーダーにカードをかざしてください
-      #idm{style:"display: none;"}
-    %td
-      %button カードの読み込みを停止
+        #idm{style:"display: none;"}
+        %button#reload.user_info__reader_btn_area__btn カードの読み込みを停止
 
-%div 直近の入退出履歴
-%table 
-  %tr
-    %td 入室
-    %td 退室
-    %td 教室
-  - @records.each do |record|
-    %tr
-      %td 
-        =record.entered_at.strftime("%Y/%m/%d %H:%M")
-      %td
-        -if record.exited_at == nil
-          =record.exited_at
-        -else
-          =record.exited_at.strftime("%Y/%m/%d %H:%M")
-      %td 教室名
+  %div.record_info
+    %p.record_info__headder
+      直近の入退出履歴
+    %div.record_info__record_table
+      %table.record_info__record_table--table
+        %tr.record_info__tr
+          %td 入室
+          %td 退室
+          %td 教室
+        - @records.each do |record|
+          %tr.record_info__tr
+            %td.record_info__table--td 
+              =record.entered_at.strftime("%Y/%m/%d %H:%M")
+            %td.record_info__table--td 
+              -if record.exited_at == nil
+                =record.exited_at
+              -else
+                =record.exited_at.strftime("%Y/%m/%d %H:%M")
+            %td.record_info__table--td 教室名
+      %p.record_info__more
+        =link_to "もっと見る","#"
 
-=link_to "もっと見る","#"
-
--if @record
-  = form_with(url: entered_exited_path(@record.user_id), local: true, method: :patch, class: "search-form") do |form|
-    = form.submit "退室する", class: "search-btn"
--else
-  = form_with(url: entered_exiteds_path, local: true, method: :post, class: "search-form") do |form|
-    = form.submit "入室する", class: "search-btn"
+      %div.record_info__button_area
+      -if @record
+        = form_with(url: entered_exited_path(@record.user_id), local: true, method: :patch, class: "search-form") do |form|
+          = form.submit "退室する", class: "record_info__button_area--btn"
+      -else
+        = form_with(url: entered_exiteds_path, local: true, method: :post, class: "search-form") do |form|
+          = form.submit "入室する", class: "record_info__button_area--btn"
 
 -if @user.authority != "user"
-  =link_to "ユーザ情報編集",users_path
-  =link_to "入退室情報編集",records_path
-=link_to "ログアウト",destroy_user_session_path,method: :delete, class: 'btn'
+  .edit_btn_area
+    =link_to "ユーザ情報編集",users_path,class:"users_edit"
+    =link_to "入退室情報編集",records_path,class:"records_edit"
+=link_to "ログアウト",destroy_user_session_path,method: :delete, class: 'loggout_btn'

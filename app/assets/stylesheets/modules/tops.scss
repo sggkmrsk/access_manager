@@ -1,0 +1,35 @@
+html{
+  box-sizing: border-box;
+}
+
+.menu{
+  display:flex;
+  width:100vw;
+  height:100vh;
+  &__entered_exited{
+    width:50vw;
+    &--img{
+      position: relative;
+      top:calc(25vh);
+      left:calc(25vw - 128px);
+    }
+    &--text{
+      position: absolute;
+      width:50px;
+      height:20px;
+    }
+  }
+  &__login{
+    width:50vw;
+    &--img{
+      position: relative;
+      top:calc(25vh);
+      left:calc(25vw - 128px);
+    }
+    &--text{
+      position: absolute;
+      width:50px;
+      height:20px;
+    }
+  }
+}

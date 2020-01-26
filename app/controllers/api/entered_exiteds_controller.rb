@@ -1,5 +1,5 @@
 class Api::EnteredExitedsController < ApplicationController
-  before_action :set_record
+  before_action :set_record,only: :update
 
   def index
     if @record
@@ -18,7 +18,6 @@ class Api::EnteredExitedsController < ApplicationController
   end
 
   def update
-    @record = Record.includes(:user).where(exited_at: nil).find_by(users:{idm: params[:idm]})
     t = Time.now
     @record.exited_at = t
     @record.save

@@ -1,0 +1,37 @@
+html{
+  box-sizing: border-box;
+}
+#start{
+}
+
+#waiting{
+  display: none;
+}
+
+.reader_btn{
+  width: calc(100vw - 40px);
+  height: 100px;
+  margin:150px 20px;
+}
+
+.encourage_reload {
+  text-align: center;
+}
+
+#reload{
+
+}
+#back{
+}
+.btn_area{
+  display: flex;
+  justify-content: space-between;
+  &__btn{
+    display:inline-block;
+    width:161px;
+    height:100px;
+    &--text{
+      text-decoration: none;
+    }
+  }
+}

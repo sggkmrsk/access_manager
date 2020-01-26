@@ -24,7 +24,7 @@
           =form.text_field :idm,placeholder: user.idm
         -if current_user.authority == 'admin'
           %td
-            =form.text_field :authority,placeholder: user.authority
+            =form.select :authority,["admin","editor","user"],selected: user.authority
         %td
           =form.submit "更新する",class:"btn"
         -if current_user.authority == 'admin'

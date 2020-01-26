@@ -1,3 +1,9 @@
-%ul.menu
-  =link_to '入退出登録',entered_exiteds_path, class:"side_bar__menu--list"
-  =link_to "ログイン", new_user_session_path, class: 'side_bar__menu--list'
+.menu
+  .menu__entered_exited
+    =link_to entered_exiteds_path do
+      =image_tag("/assets/entered_exited_img.png",class:"menu__entered_exited--img") do
+        %p.menu__entered_exited--text 入退室登録
+  .menu__login
+    =link_to new_user_session_path do
+      =image_tag("/assets/login_img.png",class:"menu__login--img") do
+        %p.menu__login--text ログイン

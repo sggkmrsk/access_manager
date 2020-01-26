@@ -17,6 +17,7 @@ class RecordsController < ApplicationController
 
   private
   def record_params
+    binding.pry
     params.require(:record).permit(:entered_at, :exited_at)
   end
 end

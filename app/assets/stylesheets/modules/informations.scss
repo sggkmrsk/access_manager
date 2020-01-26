@@ -1,0 +1,113 @@
+html{
+  box-sizing: border-box;
+  height:100vh;
+  width:100vw;
+}
+
+.info{
+  display:flex;
+  justify-content: space-between;
+}
+
+.hello{
+  padding:20px 0;
+  width:100vw;
+  height:40px;
+  font-size: 24px;
+  text-align:center;
+  line-height: 40px;
+}
+
+.user_info{
+  height:calc(100vh - 220px);
+  width:40vw;
+  &__headder{
+    text-align:center;
+    font-size: 20px;
+  }
+  &__user_table{
+    padding:30px;
+    &--table{
+      width:calc(50vw - 60px);
+    }
+    &--tr{
+
+    }
+    &--td{
+
+    }
+  }
+  &__edit-btn{
+    -webkit-appearance: none;
+    background-color:silver;
+    font-size: 16px;
+    height:60px;
+    width:120px;
+    display:block;
+    margin:auto;
+    &:hover{
+      background-color:orange;
+      color: black;  
+    }
+  }
+  &__idm_table{
+    padding:30px;
+    &--table{
+      padding:0 20px;
+      width:calc(50vw - 60px);
+    }
+    &--tr{
+
+    }
+    &--td{
+
+    }
+  }
+  &__reader_btn_area{
+    display:flex;
+    &__btn{
+      width:120px;
+      height:60px;
+      font-size: 12px;
+      margin:20px auto;
+      &:hover{
+        background-color:orange;
+        color: black;
+      }
+    }
+  }
+}
+
+.record_info{
+  height:calc(100vh - 240px);
+  width:55vw;
+  border-left:solid 1px black;
+  &__headder{
+    text-align:center;
+    font-size: 20px;
+  }
+  &__record_table{
+    padding:10px 0;
+    &--table{
+      padding:0 5px;
+      width:50vw;
+    }
+  }
+  &__more{
+    text-align:center;
+  }
+  &__button_area{
+    &--btn{
+      display:block;
+      width:120px;
+      height:60px;
+      font-size: 12px;
+      background-color:silver;
+      margin:20px auto;
+      &:hover{
+        background-color:orange;
+        color: black;
+      }
+    }
+  }
+}
