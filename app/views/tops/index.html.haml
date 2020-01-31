@@ -1,9 +1,12 @@
 .menu
-  .menu__entered_exited
-    =link_to entered_exiteds_path do
-      =image_tag("/assets/entered_exited_img.png",class:"menu__entered_exited--img") do
-        %p.menu__entered_exited--text 入退室登録
-  .menu__login
-    =link_to new_user_session_path do
-      =image_tag("/assets/login_img.png",class:"menu__login--img") do
-        %p.menu__login--text ログイン
+  .menu__left
+    .menu__left__entered_exited
+      =icon('fa','door-closed',class:"menu__left__entered_exited--icon",id:"close")
+      =icon('fa','door-open',class:"menu__left__entered_exited--icon",id:"open",style:"display:none;")
+      =link_to entered_exiteds_path do
+        %button.menu__left__entered_exited--text#door 入退室登録
+  .menu__right
+    .menu__right__login
+      =icon('fa','cog',class:"menu__right__login--icon",id:"spin")
+      =link_to new_user_session_path do
+        %button.menu__right__login--text#cog ログインして編集

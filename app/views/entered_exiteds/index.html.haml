@@ -2,12 +2,13 @@
 %html
   %head
   %body
-    %button#start.reader_btn FeliCaリーダーに接続
+    %button#start.reader_btn
+      %P{style: "font-size:20px"} このボタンを押してICカードリーダーに接続してください。
     %button#waiting.reader_btn
-      入室退出受付中です。
-      ICカードリーダーにICカードをかざしてください。
-    #idm{style: "display: none;"}
+      %p{style: "font-size:20px;color:red;"}  入室退出受付中です。
+      %p ICカードリーダーにICカードをかざしてください。
+      %p ※もう一度このボタンを押すとカードリーダとの接続が停止されます。
+    %button#idm.reader_btn{style: "display: none;",disable:"disable"}
   %p.encourage_reload リーダーにうまく接続できない場合はカードリーダを抜き差ししてください。
   .btn_area
-    %button#back.btn_area__btn
-      = link_to "メニューに戻る",root_path,class:"btn_area__btn--text"
+    %button#back.btn_area__btn{onclick:"location.href='#{root_path}'"} メニューに戻る

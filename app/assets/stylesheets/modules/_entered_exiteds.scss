@@ -2,6 +2,7 @@ html{
   box-sizing: border-box;
 }
 #start{
+
 }
 
 #waiting{
@@ -18,18 +19,25 @@ html{
   text-align: center;
 }
 
-#reload{
-}
 #back{
 }
 .btn_area{
   &__btn{
+    border-radius: 10%;
     display:block;
     width:161px;
     height:100px;
     margin:20px auto;
+    color:black;
     &--text{
       text-decoration: none;
     }
+    &:hover{
+      background-color:orange;
+      color: black;
+    }
   }
+}
+link{
+  color:white;
 }

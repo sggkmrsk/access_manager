@@ -13,7 +13,7 @@ class Api::EnteredExitedsController < ApplicationController
   def create
     user = User.find_by(idm: params[:idm])
     t = Time.now
-    @record = Record.new(entered_at: t,user_id: user.id)
+    @record = Record.includes(:user).new(entered_at: t,user_id: user.id)
     @record.save
   end
 

@@ -25,6 +25,8 @@ $(function(){
       let startButton = document.getElementById('start');
       let idmMessage = document.getElementById('idm');
       let waitingButton = document.getElementById('waiting');
+      const waittime = 100
+
 
       function entryProcessing(idmStr){
         $.ajax({
@@ -33,11 +35,16 @@ $(function(){
           data: {idm: idmStr},
           dataType: "json"
         })
-        .done(function() {
-          alert("入室処理が完了しました");
+        .done(function(record) {
+          idmMessage.innerText = "おはようございます。" + record.name + 'さん';
+          idmMessage.style.color = 'red';
+          idmMessage.style.fontSize = '20px';
+          idmMessage.style.display = 'block';
+          waitingButton.style.display = 'none';
+          sleep(waittime)
         })
         .fail(function() {
-          alert("通信エラー");
+          alert("このカードは登録されていません");
         })
         .always(function(){
           return
@@ -52,11 +59,16 @@ $(function(){
           data: {idm: idmStr},
           dataType: "json"
         })
-        .done(function() {
-          alert("退室処理が完了しました");
+        .done(function(record) {
+          idmMessage.innerText = "お疲れ様でした。" + record.name + 'さん';
+          idmMessage.style.color = 'skyblue';
+          idmMessage.style.fontSize = '20px';
+          idmMessage.style.display = 'block';
+          waitingButton.style.display = 'none';
+          sleep(waittime)
         })
         .fail(function() {
-          alert("通信エラー");
+          alert("このカードは登録されていません");
         })
         .always(function(){
           return
@@ -175,7 +187,6 @@ $(function(){
             }
             idmStr += idm[i].toString(16);
           }
-          console.log(idmStr)
           $.ajax({
             type: "GET",
             url: 'api/entered_exiteds#index',
@@ -183,7 +194,6 @@ $(function(){
             dataType: "json"
           })
           .done(function(record) {
-            console.log(record)
             if (record.id == null){
               entryProcessing(idmStr)
             }else{
@@ -191,8 +201,7 @@ $(function(){
             }
           })
           .fail(function() {
-            console.log()
-            alert("通信エラーが発生しました");
+            alert("このカードは登録されていません");
           });
           // idmMessage.innerText = "カードのIDm: " + idmStr;
           // idmMessage.style.display = 'block';

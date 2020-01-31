@@ -24,11 +24,11 @@ $(function(){
 
       let startButton = document.getElementById('start');
       let idmMessage = document.getElementById('idm');
-      let waitingMessage = document.getElementById('waiting');
+      let waitingButton = document.getElementById('waiting');
       let userId = $(".info").attr("data-user-id")
-      let reloadButton = document.getElementById('reload');
+      const waittime = 100
       
-      reloadButton.addEventListener('click',function(){
+      waitingButton.addEventListener('click',function(){
         window.location.reload();
       });
 
@@ -158,23 +158,23 @@ $(function(){
             data: {id: userId,idm: idmStr},
             dataType: "json"
           })
-          .done(function(result) {
-            console.log(result)
+          .done(function() {
             var html = buildHTML(idmStr)
             $(".idm").replaceWith(html)
-            alert("idmを変更しました");
-
+          idmMessage.innerText = "idmを変更しました。"
+          idmMessage.style.display = 'block';
+          waitingButton.style.display = 'none';
+          sleep(waittime)
           })
           .fail(function() {
-            console.log()
             alert("通信エラーが発生しました");
           });
           // idmMessage.innerText = "カードのIDm: " + idmStr;
           // idmMessage.style.display = 'block';
-          // waitingMessage.style.display = 'none';
+          // waitingButton.style.display = 'none';
         } else {
           idmMessage.style.display = 'none';
-          waitingMessage.style.display = 'block';
+          waitingButton.style.display = 'block';
         }
         // DEBUG:nfc.clf.rcs380:rcvd SENSF_RES 01000000000000000000000000000000000000
         // DEBUG:nfc.clf:found 212F sensf_res=01000000000000000000000000000000000000
@@ -206,7 +206,7 @@ $(function(){
           await device.selectConfiguration(1);
           await device.claimInterface(0);
           startButton.style.display = 'none';
-          waitingMessage.style.display = 'block';
+          waitingButton.style.display = 'block';
           do {
             await session(device);
             await sleep(500);
@@ -218,7 +218,7 @@ $(function(){
           } catch (e) {
           }
           startButton.style.display = 'block';
-          waitingMessage.style.display = 'none';
+          waitingButton.style.display = 'none';
           idmMessage.style.display = 'none';
           throw e;
         }

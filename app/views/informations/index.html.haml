@@ -33,12 +33,12 @@
             =@user.idm
 
       %div.user_info__reader_btn_area
-        %button#start.user_info__reader_btn_area__btn{style: "display: block;"}
-          認証カード再登録
-        %button#waiting.user_info__reader_btn_area__btn{style: "display: none;",disabled: "disabled;"}
-          FeliCaリーダーにカードをかざしてください
-        #idm{style:"display: none;"}
-        %button#reload.user_info__reader_btn_area__btn カードの読み込みを停止
+        %button#start.user_info__reader_btn_area__btn
+          %P このボタンを押してICカードリーダーに接続してください。
+        %button#waiting.user_info__reader_btn_area__btn
+          %p ICカードリーダーにICカードをかざしてください。
+          %p{style: "font-size:10px;"}  ※もう一度このボタンを押すとカードリーダとの接続が停止されます。
+        %button#idm.user_info__reader_btn_area__btn{style:"display: none;"}
 
   %div.record_info
     %p.record_info__headder

@@ -1,0 +1,14 @@
+$(function(){
+  $("#door").hover(function(){
+    $("#close").css('display','none')
+    $("#open").css('display','block')
+  },function(){
+    $("#open").css('display','none')
+    $("#close").css('display','block')
+  })
+  $("#cog").hover(function(){
+    $("#spin").addClass('pulse')
+  },function(){
+    $("#spin").removeClass('pulse')
+  })
+})
