@@ -3,10 +3,12 @@
     .menu__left__entered_exited
       =icon('fa','door-closed',class:"menu__left__entered_exited--icon",id:"close")
       =icon('fa','door-open',class:"menu__left__entered_exited--icon",id:"open",style:"display:none;")
-      =link_to entered_exiteds_path do
-        %button.menu__left__entered_exited--text#door 入退室登録
+      =link_to entered_exiteds_path,class:"menu__left__entered_exited--link" do
+        %button.menu__left__entered_exited--btn#door
+          %p.menu__left__entered_exited--text 入退室登録
   .menu__right
     .menu__right__login
       =icon('fa','cog',class:"menu__right__login--icon",id:"spin")
-      =link_to new_user_session_path do
-        %button.menu__right__login--text#cog ログインして編集
+      =link_to new_user_session_path ,class:"menu__right__login--link" do
+        %button.menu__right__login--btn#cog
+          %p.menu__right__login--text ログインして編集

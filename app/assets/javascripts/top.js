@@ -7,8 +7,8 @@ $(function(){
     $("#close").css('display','block')
   })
   $("#cog").hover(function(){
-    $("#spin").addClass('pulse')
+    $("#spin").addClass('pulse-right')
   },function(){
-    $("#spin").removeClass('pulse')
+    $("#spin").removeClass('pulse-right')
   })
 })

@@ -1,0 +1,123 @@
+//右回り
+.spin-right {
+  -webkit-animation: spin-right 2s infinite linear;
+  animation: spin-right 2s infinite linear;
+}
+
+.pulse-right {
+  -webkit-animation: spin-right 1s infinite steps(8);
+  animation: spin-right 1s infinite steps(8);
+}
+@-webkit-keyframes spin-right {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+@keyframes spin-right {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+
+//左回り
+.spin-left {
+  -webkit-animation: spin-left 2s infinite linear;
+  animation: spin-left 2s infinite linear;
+}
+
+.pulse-left {
+  -webkit-animation: spin-left 1s infinite steps(8);
+  animation: spin-left 1s infinite steps(8);
+}
+@-webkit-keyframes spin-left {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin-left {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+//X軸
+.spinX {
+  -webkit-animation: spinX 2s infinite linear;
+  animation: spinX 2s infinite linear;
+}
+
+.pulseX {
+  -webkit-animation: spinX 60s infinite steps(60);
+  animation: spinX 60s infinite steps(60);
+}
+@-webkit-keyframes spinX {
+  0% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg);
+    transform: rotateX(360deg);
+  }
+}
+@keyframes spinX {
+  0% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg);
+    transform: rotateX(360deg);
+  }
+}
+
+//Y軸
+.spinY {
+  -webkit-animation: spinY 2s infinite linear;
+  animation: spinY 2s infinite linear;
+}
+
+.pulseY {
+  -webkit-animation: spinY 60s infinite steps(60);
+  animation: spinY 60s infinite steps(60);
+}
+@-webkit-keyframes spinY {
+  0% {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+@keyframes spinY {
+  0% {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}

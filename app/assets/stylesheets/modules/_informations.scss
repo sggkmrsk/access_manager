@@ -39,7 +39,8 @@ html{
   }
   &__edit-btn{
     -webkit-appearance: none;
-    background-color:silver;
+    background-color: #96d2ea;
+    border-radius: 5px;
     font-size: 16px;
     height:60px;
     width:120px;
@@ -70,6 +71,8 @@ html{
       height:60px;
       font-size: 12px;
       margin:20px auto;
+      background-color: #96d2ea;
+      border-radius: 5px;
       &:hover{
         background-color:orange;
         color: black;
@@ -102,8 +105,9 @@ html{
       width:120px;
       height:60px;
       font-size: 16px;
-      background-color:silver;
+      background-color: #96d2ea;
       margin:20px auto;
+      border-radius: 5px;
       &:hover{
         background-color:orange;
         color: black;
@@ -121,7 +125,8 @@ html{
     width:120px;
     height:60px;
     font-size: 16px;
-    background-color:silver;
+    background-color: #96d2ea;
+    border-radius: 5px;
     &:hover{
       background-color:orange;
       color: black;
@@ -137,7 +142,9 @@ html{
   width:120px;
   height:60px;
   font-size: 16px;
-  background-color:silver;
+  background-color: #96d2ea;
+  border-radius: 5px;
+  co
   &:hover{
     background-color:orange;
     color: black;

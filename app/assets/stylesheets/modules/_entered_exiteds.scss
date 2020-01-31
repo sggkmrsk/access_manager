@@ -6,6 +6,7 @@ html{
 }
 
 #waiting{
+  background-color: #ffc5ed;
   display: none;
 }
 
@@ -13,6 +14,8 @@ html{
   width: calc(100vw - 40px);
   height: 100px;
   margin:150px 20px;
+  border-radius: 10px;
+  background-color: #96d2ea;
 }
 
 .encourage_reload {
@@ -23,12 +26,13 @@ html{
 }
 .btn_area{
   &__btn{
-    border-radius: 10%;
+    border-radius: 10px;
     display:block;
     width:161px;
     height:100px;
     margin:20px auto;
     color:black;
+    background-color: #96d2ea;
     &--text{
       text-decoration: none;
     }
